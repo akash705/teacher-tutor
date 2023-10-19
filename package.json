@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "prettier:check": "prettier --check .",
+    "prettier:fix": "prettier . --write"
   },
   "dependencies": {
     "next": "13.5.5",
@@ -22,11 +24,14 @@
     "eslint-config-next": "13.5.5",
     "husky": "^8.0.0",
     "lint-staged": "^15.0.1",
+    "prettier": "3.0.3",
     "typescript": "^5"
   },
   "lint-staged": {
+    "!*.{js,ts,tsx}": "prettier --ignore-unknown --write",
     "*.{js,ts,tsx}": [
-      "eslint --fix"
+      "eslint --fix",
+      "prettier --write"
     ]
   }
 }
